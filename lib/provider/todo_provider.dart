@@ -1,27 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todoey/databse/db_provider.dart';
 import 'package:todoey/model/task.dart';
-import 'package:todoey/todo_repository/todo_repository.dart';
 
-// final taskProvider= FutureProvider((ref)  async{
-//   final todos= await DbProvider.db.getAllTasks();
-//  // final todos= await ref.watch(databaseProvider).getAllTasks();
-//  return StateNotifierProvider<TodoList,List<Task>>((ref) => TodoList(todos));
-// });
+import 'db_provider.dart';
 
-
-
-
-final databaseProvider= Provider<DbProvider>((ref) {
-  return DbProvider.db;
-});
-
-final todoListProvider= StateNotifierProvider<TodoManager,List<Task>>((ref) {
-  final db= TodoManager(ref.watch(databaseProvider));
-  return db;
-});
 
 
 class TodoManager extends StateNotifier<List<Task>>{
@@ -54,6 +36,19 @@ Future<void> toggle(Task task)async{
 
   
 }}
+
+
+
+
+
+final databaseProvider= Provider<DbProvider>((ref) {
+  return DbProvider.db;
+});
+
+final todoListProvider= StateNotifierProvider<TodoManager,List<Task>>((ref) {
+  final db= TodoManager(ref.watch(databaseProvider));
+  return db;
+});
 
 final filterProvider= StateProvider<bool>((ref) => false);
 

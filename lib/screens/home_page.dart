@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todoey/todo_provider.dart';
+import 'package:todoey/provider/todo_provider.dart';
 
 import '../model/task.dart';
 import 'add_task.dart';
