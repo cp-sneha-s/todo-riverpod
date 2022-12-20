@@ -1,12 +1,12 @@
-class Task {
+class Todo {
    int? id;
    String name;
    bool completed;
 
-  Task({this.id, required this.name, required this.completed});
+  Todo({this.id, required this.name, required this.completed});
 
-  factory Task.fromMap(Map<String, dynamic> map) {
-    return Task(
+  factory Todo.fromMap(Map<String, dynamic> map) {
+    return Todo(
         id: map['id'],
         name: map['name'],
         completed: map['completed'] == 1 ? true : false);

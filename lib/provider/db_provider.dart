@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todoey/model/task.dart';
+import 'package:todoey/model/todo.dart';
 
 class DbProvider {
   DbProvider._();
@@ -29,21 +29,21 @@ class DbProvider {
       );
     });
   }
-  Future<List<Task>> getAllTasks()async{
+  Future<List<Todo>> getAllTasks()async{
     final db= await database;
     final List<Map<String,dynamic>> maps=await db.query("Task",orderBy: 'id');
-    List<Task> list=[];
-    maps.forEach((result) {Task task = Task.fromMap(result);
+    List<Todo> list=[];
+    maps.forEach((result) {Todo task = Todo.fromMap(result);
     list.add(task);});
     return list;
   }
-  Future<Task> addTask(Task task)async{
+  Future<Todo> addTask(Todo task)async{
     final db= await database;
    task.id= await db.insert('Task', task.toMap(),conflictAlgorithm: ConflictAlgorithm.replace);
    return task;
   }
 
-  Future<int> toggleTask(Task task)async{
+  Future<int> toggleTask(Todo task)async{
     final db= await database;
   return  await db.update('Task', task.toMap(),where: "id = ?",whereArgs:[task.id] );
   }
