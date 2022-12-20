@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todoey/provider/todo_provider.dart';
 
-import '../model/task.dart';
 
 class AddTaskPage extends StatelessWidget {
    AddTaskPage({Key? key}) : super(key: key);
@@ -26,17 +24,12 @@ class AddTaskPage extends StatelessWidget {
                             border: OutlineInputBorder()
                         ),
                       ),
-                      Consumer(
-                        builder: (context,ref,child) {
-                          return ElevatedButton(
+                       ElevatedButton(
                             onPressed: ()async {
-                             await ref.watch(todoListProvider.notifier).add(Task(name:taskNameController.text,completed:false));
                               Navigator.pop(context);
                              },
                             child: const Text('Add task'),
 
-                          );
-                        }
                       )
                     ],
                   ),
