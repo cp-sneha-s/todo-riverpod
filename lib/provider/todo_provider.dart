@@ -14,8 +14,8 @@ class TodoManager extends StateNotifier<List<Task>>{
 
     Future<void> getAllTasks()async{
       try{
-        final todos= await dbProvider.getAllTasks();
-        state= todos;
+        state= await dbProvider.getAllTasks();
+
       }on Exception catch(error){
         throw Exception(error.toString());
       }

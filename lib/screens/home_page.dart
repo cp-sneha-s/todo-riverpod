@@ -31,20 +31,20 @@ class HomePage extends ConsumerWidget {
           )
         ],
       ),
-      body: Consumer(
-        builder: (context,ref,child) {
-          return ListView.builder(
+      body: ListView.builder(
                     itemCount: todos.length,
-                    itemBuilder: (context,index){
+                    itemBuilder: (context,index) {
                       Task task = todos[index];
-                      return ListTile(title: Text(task.name),trailing: Checkbox(value: task.completed,
-                        onChanged: (bool? value) {
-                        Task toggledTask= Task(name: task.name, completed: !task.completed,id: task.id);
-                          ref.read(todoListProvider.notifier).toggle(toggledTask);
-                        },),);
-                    });
-
-        }
+                      return ListTile(title: Text(task.name),
+                        trailing: Checkbox(value: task.completed,
+                          onChanged: (bool? value) {
+                            Task toggledTask = Task(name: task.name,
+                                completed: !task.completed,
+                                id: task.id);
+                            ref.read(todoListProvider.notifier).toggle(
+                                toggledTask);
+                          },),);
+                    }
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),

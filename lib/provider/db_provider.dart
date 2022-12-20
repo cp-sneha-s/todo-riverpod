@@ -19,7 +19,7 @@ class DbProvider {
   Future<Database> _initDB() async {
     var path = await getDatabasesPath();
     String databasePath= join(path,"Todo");
-    await deleteDatabase(databasePath);
+
     return await openDatabase(
         databasePath, version: 1, onCreate: (Database db, int version) async {
       await db.execute("CREATE TABLE Task ("
