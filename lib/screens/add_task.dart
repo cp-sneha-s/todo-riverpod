@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 
 class AddTaskPage extends StatelessWidget {
@@ -10,9 +9,7 @@ class AddTaskPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Add Task'),),
-      body: Consumer(
-        builder: (context,ref,child) {
-          return     Padding(
+      body:      Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 8.0),
                   child: Column(
                     children: [
@@ -33,8 +30,7 @@ class AddTaskPage extends StatelessWidget {
                       )
                     ],
                   ),
-                );
-              },
+
     ));
 
   }
